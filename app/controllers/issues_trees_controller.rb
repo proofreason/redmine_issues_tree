@@ -4,6 +4,11 @@ class IssuesTreesController < ApplicationController
   helper :issues
   helper :versions
 
+  if Redmine::Plugin.installed?(:redmineup_tags)
+    helper :tags
+    helper :issues_tags
+  end
+
   menu_item :issues, only: :tree_index
 
   # This filter, additionally, checks permissions in a project
